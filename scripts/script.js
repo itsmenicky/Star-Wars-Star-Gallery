@@ -1,9 +1,13 @@
-async function renderizaCards() {
+const listaDeDadosPeople = 'https://swapi.dev/api/people'
+const listaDeDadosPlanets = 'https://swapi.dev/api/planets/'
+const listaDeDadosFilms = 'https://swapi.dev/api/films/'
+
+async function renderizaCardsPeople() {
   const lista = document.querySelector('#cardList')
 
   lista.innerHTML = ""
 
-  const listaDeDados = await fetch('https://swapi.dev/api/people', {
+  const listaDeDados = await fetch(listaDeDadosPeople, {
     method: "GET"
   })
   .then(function(resposta) {
@@ -72,4 +76,4 @@ function viraCard() {
   }
 }
 
-renderizaCards()
+renderizaCardsPeople()
