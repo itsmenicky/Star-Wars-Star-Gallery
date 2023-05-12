@@ -128,3 +128,29 @@ async function renderizaCardsPlanets(){
 
 
 }
+
+async function renderizaCardsShips(){
+  let lista = document.querySelector('#cardlist')
+  lista.innerHTML = ''
+
+  let listaDeDados = await fetch('https://swapi.dev/api/starships', {
+    method:'GET'
+  })
+  .then(function(resposta){
+    return resposta.json()
+  })
+  
+  for(let indice = 0; indice < listaDeDados.results.length; indice++) {
+    let elemento = listaDeDados.results[indice]
+
+    let li = document.createElement("li")
+    let divFrente = document.createElement('div')
+    let divVerso = document.createElement('div')
+    let divNomeFrente = document.createElement('div')
+    let divNomeVerso = document.createElement('div')
+    let listaDados = document.createElement('ul')
+    let imagem = document.createElement('img')
+    const fabricante = document.createElement('li')
+    const passageiros = document.createElement('li')
+  }
+}
