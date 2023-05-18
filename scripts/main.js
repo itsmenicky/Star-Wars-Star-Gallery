@@ -130,27 +130,111 @@ async function renderizaCardsPlanets(){
 }
 
 async function renderizaCardsShips(){
-  let lista = document.querySelector('#cardlist')
-  lista.innerHTML = ''
+  let lista = document.querySelector('#cardList')
+
+  lista.innerHTML = ""
+
 
   let listaDeDados = await fetch('https://swapi.dev/api/starships', {
-    method:'GET'
-  })
-  .then(function(resposta){
-    return resposta.json()
-  })
-  
-  for(let indice = 0; indice < listaDeDados.results.length; indice++) {
-    let elemento = listaDeDados.results[indice]
+   method:'GET'})
+   .then(function(resposta){
+     return resposta.json()
+   })
 
-    let li = document.createElement("li")
-    let divFrente = document.createElement('div')
-    let divVerso = document.createElement('div')
-    let divNomeFrente = document.createElement('div')
-    let divNomeVerso = document.createElement('div')
-    let listaDados = document.createElement('ul')
-    let imagem = document.createElement('img')
-    const fabricante = document.createElement('li')
-    const passageiros = document.createElement('li')
-  }
+   for(let indice = 0; indice < listaDeDados.results.length; indice++) {
+     let elemento = listaDeDados.results[indice]
+ 
+     let li = document.createElement("li")
+     let divFrente = document.createElement('div')
+     let divVerso = document.createElement('div')
+     let divNomeFrente = document.createElement('div')
+     let divNomeVerso = document.createElement('div')
+     let listaDados = document.createElement('ul')
+     let imagem = document.createElement('img')
+     const fabricante = document.createElement('li')
+     const passageiros = document.createElement('li')
+
+     li.classList.add('card', 'listCard')
+     divFrente.classList.add("face");
+     divFrente.classList.add("front");
+
+     divNomeFrente.classList.add("titleCard")
+     divNomeFrente.innerText = elemento.name
+
+     divNomeVerso.classList.add("titleCard")
+     divNomeVerso.innerText = elemento.name
+
+     listaDados.classList.add("cardData")
+
+     fabricante.innerText = 'Fabricante: ' + elemento.manufacturer
+     passageiros.innerText = 'Passageiros: ' + elemento.passengers
+
+     divVerso.classList.add('face', 'back')
+
+     imagem.src = "./assets/starduck.png"
+     imagem.alt = "starduck"
+
+     listaDados.append(fabricante, passageiros)
+     divFrente.append(divNomeFrente, listaDados)
+     divVerso.append(divNomeVerso, imagem)
+     li.append(divFrente, divVerso)
+     lista.append(li)
+   }
+   viraCard()
+
+}
+
+async function renderizaCardsFilms(){
+  let lista = document.querySelector('#cardList')
+
+  lista.innerHTML = ""
+
+
+  let listaDeDados = await fetch('https://swapi.dev/api/films', {
+   method:'GET'})
+   .then(function(resposta){
+     return resposta.json()
+   })
+
+   for(let indice = 0; indice < listaDeDados.results.length; indice++) {
+     let elemento = listaDeDados.results[indice]
+ 
+     let li = document.createElement("li")
+     let divFrente = document.createElement('div')
+     let divVerso = document.createElement('div')
+     let divNomeFrente = document.createElement('div')
+     let divNomeVerso = document.createElement('div')
+     let listaDados = document.createElement('ul')
+     let imagem = document.createElement('img')
+     const diretor = document.createElement('li')
+     const lancamento = document.createElement('li')
+
+     li.classList.add('card', 'listCard')
+     divFrente.classList.add("face");
+     divFrente.classList.add("front");
+
+     divNomeFrente.classList.add("titleCard")
+     divNomeFrente.innerText = elemento.title
+
+     divNomeVerso.classList.add("titleCard")
+     divNomeVerso.innerText = elemento.title
+
+     listaDados.classList.add("cardData")
+
+     diretor.innerText = 'Diretor: ' + elemento.director
+     lancamento.innerText = 'Data de lançamento: ' + elemento.release_date
+
+     divVerso.classList.add('face', 'back')
+
+     imagem.src = "./assets/starduck.png"
+     imagem.alt = "starduck"
+
+     listaDados.append(diretor, lancamento)
+     divFrente.append(divNomeFrente, listaDados)
+     divVerso.append(divNomeVerso, imagem)
+     li.append(divFrente, divVerso)
+     lista.append(li)
+   }
+   viraCard()
+
 }
