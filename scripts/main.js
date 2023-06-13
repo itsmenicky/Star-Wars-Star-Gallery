@@ -1,3 +1,5 @@
+let lista = document.querySelector('#cardList')
+
 function viraCard() {
   const cards = document.querySelectorAll('.listCard')
 
@@ -12,7 +14,6 @@ function viraCard() {
 
 
 async function renderizaCardsPeople() {
-  let lista = document.querySelector('#cardList')
 
   lista.innerHTML = ""
 
@@ -74,7 +75,6 @@ async function renderizaCardsPeople() {
 }
 
 async function renderizaCardsPlanets(){
-     let lista = document.querySelector('#cardList')
 
      lista.innerHTML = ""
 
@@ -130,7 +130,6 @@ async function renderizaCardsPlanets(){
 }
 
 async function renderizaCardsShips(){
-  let lista = document.querySelector('#cardList')
 
   lista.innerHTML = ""
 
@@ -185,7 +184,6 @@ async function renderizaCardsShips(){
 }
 
 async function renderizaCardsFilms(){
-  let lista = document.querySelector('#cardList')
 
   lista.innerHTML = ""
 
